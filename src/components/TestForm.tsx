@@ -1,16 +1,17 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Stack } from "@mui/material";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 import { CreateTestInput, CreateTestSchema, TestCategory } from "../types/test";
 import { RHFRadioGroup } from "./RHFRadioGroup";
 import { RHFTextField } from "./RHFTextField";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 interface TestFormProps {
   defaultValues?: CreateTestInput;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: any) => any;
+  SubmitBtn: any;
 }
 
-export default function TestForm({ defaultValues, onSubmit }: TestFormProps) {
+export default function TestForm({ defaultValues, onSubmit, SubmitBtn }: TestFormProps) {
   const methods = useForm({ defaultValues, resolver: zodResolver(CreateTestSchema) });
   const testCategory = useWatch({ control: methods.control, name: "category" });
 
@@ -46,9 +47,7 @@ export default function TestForm({ defaultValues, onSubmit }: TestFormProps) {
             </>
           )}
         </Stack>
-        <Button type="submit" variant="contained" color="primary">
-          Chỉnh sửa
-        </Button>
+        {SubmitBtn || <Button type="submit">Submit</Button>}
       </FormProvider>
     </Stack>
   );

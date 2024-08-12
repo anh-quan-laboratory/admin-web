@@ -13,7 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as TestsImport } from './routes/tests'
+import { Route as TestsRouteImport } from './routes/tests/route'
 import { Route as CustomersRouteImport } from './routes/customers/route'
 
 // Create Virtual Routes
@@ -22,7 +22,7 @@ const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const TestsRoute = TestsImport.update({
+const TestsRouteRoute = TestsRouteImport.update({
   path: '/tests',
   getParentRoute: () => rootRoute,
 } as any)
@@ -59,7 +59,7 @@ declare module '@tanstack/react-router' {
       id: '/tests'
       path: '/tests'
       fullPath: '/tests'
-      preLoaderRoute: typeof TestsImport
+      preLoaderRoute: typeof TestsRouteImport
       parentRoute: typeof rootRoute
     }
   }
@@ -70,7 +70,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   CustomersRouteRoute,
-  TestsRoute,
+  TestsRouteRoute,
 })
 
 /* prettier-ignore-end */
@@ -93,7 +93,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "customers/route.tsx"
     },
     "/tests": {
-      "filePath": "tests.tsx"
+      "filePath": "tests/route.tsx"
     }
   }
 }
