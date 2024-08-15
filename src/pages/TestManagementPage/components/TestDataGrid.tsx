@@ -54,7 +54,7 @@ export default function TestDataGrid({ onRowEditClick, onRowDeleteClick }: TestD
   ];
 
   return (
-    <div style={{ height: 600, width: "100%" }}>
+    <div style={{ width: "100%", height: 700 }}>
       <DataGrid
         rows={tests}
         columns={columns}
@@ -67,6 +67,7 @@ export default function TestDataGrid({ onRowEditClick, onRowDeleteClick }: TestD
             showQuickFilter: true,
           },
         }}
+        sx={{ p: 2 }}
       />
     </div>
   );

@@ -15,6 +15,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { Route as TestsRouteImport } from './routes/tests/route'
 import { Route as CustomersRouteImport } from './routes/customers/route'
+import { Route as CombosRouteImport } from './routes/combos/route'
 
 // Create Virtual Routes
 
@@ -32,6 +33,11 @@ const CustomersRouteRoute = CustomersRouteImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const CombosRouteRoute = CombosRouteImport.update({
+  path: '/combos',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -46,6 +52,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/combos': {
+      id: '/combos'
+      path: '/combos'
+      fullPath: '/combos'
+      preLoaderRoute: typeof CombosRouteImport
       parentRoute: typeof rootRoute
     }
     '/customers': {
@@ -69,6 +82,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
+  CombosRouteRoute,
   CustomersRouteRoute,
   TestsRouteRoute,
 })
@@ -82,12 +96,16 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/combos",
         "/customers",
         "/tests"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/combos": {
+      "filePath": "combos/route.tsx"
     },
     "/customers": {
       "filePath": "customers/route.tsx"
