@@ -4,9 +4,9 @@ import { Test, CreateTestInput } from "../types/test";
 const API_URL = "http://localhost:3000/api/tests"; // Replace with your actual API URL
 
 // Get all tests with optional keyword filter
-export async function getAllTests(keyword: string = ""): Promise<Test[]> {
+export async function getAllTests(): Promise<Test[]> {
   try {
-    const response = await axios.get(`${API_URL}?keyword=${keyword}`);
+    const response = await axios.get(`${API_URL}`);
     const data = response.data;
     return data?.data.tests || [];
   } catch (error) {

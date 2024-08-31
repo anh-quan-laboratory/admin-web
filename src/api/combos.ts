@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Combo, ComboFormValues } from "../types/combo";
+import { Combo, CreateComboInput } from "../types/combo";
 
 export async function getAllCombos(): Promise<Combo[]> {
   const response = await axios.get(`http://localhost:3000/api/combos`);
@@ -9,7 +9,7 @@ export async function getAllCombos(): Promise<Combo[]> {
 }
 
 // Create a new combo
-export async function createCombo(data: ComboFormValues): Promise<Combo> {
+export async function createCombo(data: CreateComboInput): Promise<Combo> {
   const response = await axios.post(`http://localhost:3000/api/combos`, data);
   return response.data.data.combo;
 }

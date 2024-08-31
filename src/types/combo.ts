@@ -7,6 +7,12 @@ export interface Combo {
   price: number;
 }
 
+export interface CreateComboInput {
+  name: string;
+  tests: string[];
+  price: number;
+}
+
 export interface ComboFormValues {
   name: string;
   tests: string[];

@@ -9,6 +9,7 @@ export async function getAllCustomers(keyword: string = "", role: string = "all"
 }
 
 export async function createCustomer(data: UserFormValues): Promise<User> {
+  console.log("createCustomer", data);
   const response = await axios.post(`http://localhost:3000/api/users`, data);
   return response.data.data.user;
 }

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import ComboManagementPage from "../../pages/ComboManagementPage";
+import ComboPage from "../../pages/ComboPage";
 
 export const Route = createFileRoute("/combos")({
-  component: ComboManagementPage,
+  component: ComboPage,
 });

@@ -67,7 +67,6 @@ export default function TestDataGrid({ onRowEditClick, onRowDeleteClick }: TestD
             showQuickFilter: true,
           },
         }}
-        sx={{ p: 2 }}
       />
     </div>
   );
