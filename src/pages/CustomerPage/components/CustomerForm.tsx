@@ -30,40 +30,12 @@ export default function CustomerForm({ defaultValues, onSubmit, SubmitBtn }: Cus
           label={"Vai trò"}
         />
         <Stack direction="row" spacing={1}>
-          <RHFTextField
-            fullWidth
-            name="name"
-            label="Họ và tên"
-            defaultValue={defaultValues?.name}
-            rules={{ required: true }}
-            errorMessage="Vui lòng nhập họ và tên khách hàng"
-          />
-          <RHFTextField
-            fullWidth
-            name="address"
-            label="Địa chỉ"
-            // defaultValue={defaultValues?.address}
-            rules={{ required: true }}
-            errorMessage="Vui lòng nhập địa chỉ"
-          />
+          <RHFTextField fullWidth name="name" label="Họ và tên" defaultValue={defaultValues?.name} />
+          <RHFTextField fullWidth name="address" label="Địa chỉ" />
         </Stack>
         <Stack direction="row" spacing={1}>
-          <RHFTextField
-            fullWidth
-            name="phone"
-            label="Số điện thoại"
-            // defaultValue={defaultValues?.phone}
-            rules={{ required: true }}
-            errorMessage="Vui lòng nhập số điện thoại"
-          />
-          <RHFTextField
-            fullWidth
-            name="dob"
-            label="Ngày sinh"
-            // defaultValue={defaultValues?.dob}
-            rules={{ required: true }}
-            errorMessage="Vui lòng nhập ngày sinh"
-          />
+          <RHFTextField fullWidth name="phone" label="Số điện thoại" />
+          <RHFTextField fullWidth name="dob" label="Ngày sinh" />
         </Stack>
         {SubmitBtn || <Button type="submit">Submit</Button>}
       </FormProvider>

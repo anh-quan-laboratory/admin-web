@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Combo, CreateComboInput } from "../types/combo";
+import { Combo, ComboSchema } from "../types/combo";
 
 export async function getAllCombos(): Promise<Combo[]> {
   const response = await axios.get(`http://localhost:3000/api/combos`);
@@ -9,13 +9,13 @@ export async function getAllCombos(): Promise<Combo[]> {
 }
 
 // Create a new combo
-export async function createCombo(data: CreateComboInput): Promise<Combo> {
+export async function createCombo(data: ComboSchema): Promise<Combo> {
   const response = await axios.post(`http://localhost:3000/api/combos`, data);
   return response.data.data.combo;
 }
 
 // Edit an existing combo
-export async function editCombo(id: string, data: Partial<Combo>): Promise<Combo> {
+export async function updateCombo(id: string, data: ComboSchema): Promise<Combo> {
   const response = await axios.patch(`http://localhost:3000/api/combos/${id}`, data);
   return response.data.data.combo;
 }

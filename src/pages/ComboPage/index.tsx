@@ -3,6 +3,7 @@ import { Button, Stack, Typography } from "@mui/material";
 import useMultipleDialogs from "../../hooks/useMultipleDialogs";
 import ComboList from "./components/ComboList";
 import CreateComboDialog from "./components/CreateComboDialog";
+import DeleteConfirmDialog from "./components/DeleteConfirmDialog";
 
 enum ComboDialog {
   CREATE_COMBO = "create-combo",
@@ -13,6 +14,7 @@ enum ComboDialog {
 export default function ComboPage() {
   const { dialogs, openDialog, closeDialog } = useMultipleDialogs({
     [ComboDialog.CREATE_COMBO]: { isOpen: false, data: null },
+    [ComboDialog.DELETE_COMBO]: { isOpen: false, data: null },
   });
 
   return (
@@ -27,9 +29,21 @@ export default function ComboPage() {
       <CreateComboDialog
         isOpen={dialogs[ComboDialog.CREATE_COMBO].isOpen}
         handleClose={() => closeDialog(ComboDialog.CREATE_COMBO)}
+        combo={dialogs[ComboDialog.CREATE_COMBO].data}
       />
 
-      <ComboList onRowEditClick={() => openDialog(ComboDialog.CREATE_COMBO)} />
+      {dialogs[ComboDialog.DELETE_COMBO].isOpen && (
+        <DeleteConfirmDialog
+          isOpen={dialogs[ComboDialog.DELETE_COMBO].isOpen}
+          handleClose={() => closeDialog(ComboDialog.DELETE_COMBO)}
+          combo={dialogs[ComboDialog.DELETE_COMBO].data}
+        />
+      )}
+
+      <ComboList
+        onRowEditClick={(row) => openDialog(ComboDialog.CREATE_COMBO, row)}
+        onRowDeleteClick={(row) => openDialog(ComboDialog.DELETE_COMBO, row)}
+      />
     </Stack>
   );
 }

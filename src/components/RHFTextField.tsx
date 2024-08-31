@@ -1,21 +1,18 @@
-import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
+import { Controller, FieldPath, FieldValues, useFormContext } from "react-hook-form";
 
 import { TextField, TextFieldProps } from "@mui/material";
 
-export type RHFTextFieldProps = TextFieldProps & {
-  name: string;
-  rules?: RegisterOptions;
-  errorMessage?: string;
-};
+export type RHFTextFieldProps<T extends FieldValues> = {
+  name: FieldPath<T>;
+} & TextFieldProps;
 
-export function RHFTextField({ name, ...props }: RHFTextFieldProps) {
+export function RHFTextField<T extends FieldValues>({ name, ...props }: RHFTextFieldProps<T>) {
   const { control } = useFormContext();
 
   return (
     <Controller
       name={name}
       control={control}
-      rules={props?.rules}
       render={({ field, fieldState: { error } }) => (
         <TextField {...field} {...props} error={!!error} helperText={error?.message} />
       )}
