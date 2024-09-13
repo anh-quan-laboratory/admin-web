@@ -1,11 +1,13 @@
 import {
   AppBar,
   Box,
+  Divider,
   Drawer,
   GlobalStyles,
   List,
   ListItemButton,
   ListItemText,
+  ListSubheader,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -66,13 +68,21 @@ function RootLayout() {
         anchor="left"
         open={true}
       >
-        <List sx={{ mt: 2 }}>
-          {navItems.map((item) => (
-            <RouterItemButton sx={{ px: 3 }} to={item.path} key={item.key} activeProps={activeProps}>
-              <ListItemText>{item.label}</ListItemText>
-            </RouterItemButton>
-          ))}
-        </List>
+        {navConfigs.map((navGroup) => (
+          <List
+            sx={{ mt: 2 }}
+            component="nav"
+            key={navGroup.key}
+            subheader={<ListSubheader sx={{ fontWeight: 600 }}>{navGroup.header}</ListSubheader>}
+          >
+            {navGroup.items.map((item) => (
+              <RouterItemButton sx={{ pr: 3 }} to={item.path} key={item.key} activeProps={activeProps}>
+                <ListItemText>{item.label}</ListItemText>
+              </RouterItemButton>
+            ))}
+          </List>
+        ))}
+        <Divider />
       </Drawer>
 
       <Box sx={{ ml: "var(--SideNav-width)", p: 3 }}>
@@ -84,8 +94,19 @@ function RootLayout() {
   );
 }
 
-export const navItems = [
-  { key: "customers", path: "/customers", label: "Danh mục khách hàng, bác sĩ" },
-  { key: "tests", path: "/tests", label: "Danh mục xét nghiệm" },
-  { key: "combos", path: "/combos", label: "Danh mục gói xét nghiệm" },
+export const navConfigs = [
+  {
+    key: "functions",
+    header: "Chức năng",
+    items: [{ key: "reports", path: "/reports", label: "Tạo phiếu xét nghiệm" }],
+  },
+  {
+    key: "lists",
+    header: "Danh mục",
+    items: [
+      { key: "customers", path: "/customers", label: "Danh mục khách hàng, bác sĩ" },
+      { key: "tests", path: "/tests", label: "Danh mục xét nghiệm" },
+      { key: "combos", path: "/combos", label: "Danh mục gói xét nghiệm" },
+    ],
+  },
 ];

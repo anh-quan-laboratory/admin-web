@@ -45,8 +45,6 @@ function getFormConfigs(type: UserDialogType, role: UserRole) {
 function CustomerDialog({ open, onClose, defaultValues, type }: CustomerDialogProps) {
   const queryClient = useQueryClient();
 
-  console.log(defaultValues);
-
   const methods = useForm<UserFormValues | User>({
     defaultValues,
   });
