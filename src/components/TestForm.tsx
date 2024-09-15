@@ -2,8 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Stack } from "@mui/material";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 import { CreateTestInput, CreateTestSchema, TestCategory } from "../types/test";
-import { RHFRadioGroup } from "./RHFRadioGroup";
-import { RHFTextField } from "./RHFTextField";
+import { RHFRadioGroup } from "./Form/RHFRadioGroup";
+import { RHFTextField } from "./Form/RHFTextField";
 
 interface TestFormProps {
   defaultValues?: CreateTestInput;

@@ -16,7 +16,6 @@ export enum UserRoleOption {
   DOCTOR = UserRole.DOCTOR,
 }
 
-export type UserFormValues = Omit<User, "_id">;
 
 export const userBaseSchema = z.object({
   name: z.string().min(1, "Tên không được để trống"),
@@ -55,3 +54,7 @@ export const defaultUserBaseValues: UserBaseSchema = {
 };
 
 export const defaultCustomerValues: CustomerSchema = { ...defaultUserBaseValues, role: UserRole.CUSTOMER };
+
+export type CreateUserFormValues = Omit<User, "_id">;
+export type EditUserFormValues = User;
+export type UserFormValues = CreateUserFormValues | EditUserFormValues;

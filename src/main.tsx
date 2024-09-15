@@ -5,6 +5,7 @@ import ReactDOM from "react-dom/client";
 import { CssBaseline } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { routeTree } from "./routeTree.gen";
+import { DialogContextProvider } from "@/components/CustomDialog";
 
 // Create a new router instance
 const hashHistory = createHashHistory();
@@ -25,9 +26,11 @@ const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
-    <QueryClientProvider client={queryClient}>
-      <CssBaseline />
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <DialogContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </DialogContextProvider>
   );
 }

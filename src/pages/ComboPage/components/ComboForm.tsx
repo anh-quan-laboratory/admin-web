@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, InputAdornment, Stack } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
-import { RHFTextField } from "../../../components/RHFTextField";
+import { RHFTextField } from "../../../components/Form/RHFTextField";
 import { Combo, ComboSchema, comboSchema, defaultCombo } from "../../../types/combo";
 import useMutateCombo from "../hooks/useMutateCombo";
 import TestSelection, { getTestIds } from "./TestSelection";

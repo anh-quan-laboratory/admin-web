@@ -1,6 +1,6 @@
 import { AddCircle } from "@mui/icons-material";
 import { Button, Stack, Typography } from "@mui/material";
-import useMultipleDialogs from "../../hooks/useMultipleDialogs";
+import useMultipleDialogs from "../../components/CustomDialog/useMultipleDialogs";
 import ComboList from "./components/ComboList";
 import CreateComboDialog from "./components/CreateComboDialog";
 import DeleteConfirmDialog from "./components/DeleteConfirmDialog";

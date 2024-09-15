@@ -104,7 +104,8 @@ export const navConfigs = [
     key: "lists",
     header: "Danh mục",
     items: [
-      { key: "customers", path: "/customers", label: "Danh mục khách hàng, bác sĩ" },
+      { key: "customers", path: "/customers", label: "Danh mục khách hàng" },
+      { key: "doctors", path: "/doctors", label: "Danh mục bác sĩ" },
       { key: "tests", path: "/tests", label: "Danh mục xét nghiệm" },
       { key: "combos", path: "/combos", label: "Danh mục gói xét nghiệm" },
     ],
