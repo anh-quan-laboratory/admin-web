@@ -1,12 +1,6 @@
 import { useCallback } from "react";
 import { useImmer } from "use-immer";
-
-type DialogState = {
-  [key: string]: {
-    isOpen: boolean;
-    data?: any;
-  };
-};
+import { DialogState } from "./DialogContext";
 
 const useMultipleDialogs = (defaultState: DialogState = {}) => {
   const [dialogs, setDialogs] = useImmer<DialogState>(defaultState);
@@ -20,14 +14,21 @@ const useMultipleDialogs = (defaultState: DialogState = {}) => {
 
   const closeDialog = useCallback((dialogId: string) => {
     setDialogs((draft) => {
-      draft[dialogId] = { isOpen: false, data: undefined };
+      const prevState = draft[dialogId];
+      draft[dialogId] = { ...prevState, isOpen: false };
     });
   }, []);
+
+  const isDialogOpen = useCallback((dialogId: string) => dialogs[dialogId]?.isOpen ?? false, [dialogs]);
+
+  const getDialogData = useCallback((dialogId: string) => dialogs[dialogId]?.data, [dialogs]);
 
   return {
     dialogs,
     openDialog,
     closeDialog,
+    isDialogOpen,
+    getDialogData,
   };
 };
 

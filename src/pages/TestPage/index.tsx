@@ -1,6 +1,6 @@
 import { AddCircle } from "@mui/icons-material";
 import { Button, Stack, Typography } from "@mui/material";
-import useMultipleDialogs from "../../hooks/useMultipleDialogs";
+import useMultipleDialogs from "../../components/CustomDialog/useMultipleDialogs";
 import { defaultTest } from "../../types/test";
 import CreateTestDialog from "./components/CreateTestDialog";
 import DeleteConfirmDialog from "./components/DeleteConfirmDialog";
